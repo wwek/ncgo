@@ -2,9 +2,8 @@
 网络瑞士军刀，Golang打造。netcat同类工具，重点是功能超多多！
 
 # 下载
- Github (Windows/Linux/Mac) - https://github.com/wwek/ncgo/releases
- Mirror (Windows/Linux/Mac) - 
-
+* Github (Windows/Linux/Mac) - https://github.com/wwek/ncgo/releases
+* Mirror (Windows/Linux/Mac) - 
 
 # 使用
 
