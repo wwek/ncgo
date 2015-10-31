@@ -24,6 +24,7 @@ go get -u github.com/wwek/ncgo
 
 # 依赖
 github.com/codegangsta/cli
+github.com/kellydunn/golang-geo
 
 # 感谢
 https://github.com/zpeters/speedtest

@@ -19,8 +19,10 @@ func main() {
 	wwek|流水理鱼
 	http://www.iamle.com`
 	app.Action = func(c *cli.Context) {
-		a := speedtest.ClientInfo()
-		fmt.Printf("%s", a)
+		//a,err := speedtest.GetClientInfo()
+	//	fmt.Printf("%s %s", a,err)
+		b,err := speedtest.GetServerLists()
+		fmt.Printf("%s %s", b,err)
 	}
 
 	app.Run(os.Args)
