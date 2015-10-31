@@ -27,3 +27,4 @@ github.com/codegangsta/cli
 
 # 感谢
 https://github.com/zpeters/speedtest
+https://github.com/traetox/speedtest

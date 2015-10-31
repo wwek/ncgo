@@ -1,8 +1,11 @@
 package main
 
 import (
-	"github.com/codegangsta/cli"
+	"fmt"
 	"os"
+
+	"github.com/codegangsta/cli"
+	"github.com/wwek/ncgo/app/speedtest"
 )
 
 func main() {
@@ -16,15 +19,8 @@ func main() {
 	wwek|流水理鱼
 	http://www.iamle.com`
 	app.Action = func(c *cli.Context) {
-		name := "someone"
-		if len(c.Args()) > 0 {
-			name = c.Args()[0]
-		}
-		if c.String("lang") == "spanish" {
-			println("Hola", name)
-		} else {
-			println("Hello", name)
-		}
+		a := speedtest.ClientInfo()
+		fmt.Printf("%s", a)
 	}
 
 	app.Run(os.Args)
