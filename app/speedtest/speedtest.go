@@ -110,3 +110,10 @@ func GetServerLists() (*serverSettings, error){
 	return &ss, nil
 	
 }
+
+func Run() {
+	    a,err := GetClientInfo()
+	    fmt.Printf("%s %s", a,err)
+		b,err := GetServerLists()
+		fmt.Printf("%s %s", b,err)
+}
