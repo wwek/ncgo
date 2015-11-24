@@ -21,6 +21,7 @@ go get -u github.com/wwek/ncgo
 - [ ] 反向tcp隧道
 - [ ] Ping
 - [ ] Mtr
+- [ ] Whois IP或域名信息查询
 
 # 依赖
 github.com/codegangsta/cli
