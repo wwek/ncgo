@@ -1,0 +1,50 @@
+{
+	"ImportPath": "github.com/wwek/ncgo",
+	"GoVersion": "go1.7",
+	"GodepVersion": "v74",
+	"Deps": [
+		{
+			"ImportPath": "github.com/Bowery/prompt",
+			"Rev": "d43c2707a6c5a152a344c64bb4fed657e2908a81"
+		},
+		{
+			"ImportPath": "github.com/bndr/gotabulate",
+			"Comment": "v1.1.2-11-ga1f2a69",
+			"Rev": "a1f2a699a4b825786acb4e395f9f2f6893b102b7"
+		},
+		{
+			"ImportPath": "github.com/erikstmartin/go-testdb",
+			"Rev": "8d10e4a1bae52cd8b81ffdec3445890d6dccab3d"
+		},
+		{
+			"ImportPath": "github.com/joliv/spark",
+			"Comment": "v1.0-1-g2d62589",
+			"Rev": "2d625891bea13083312494f03e686dde519d3f5a"
+		},
+		{
+			"ImportPath": "github.com/kellydunn/golang-geo",
+			"Comment": "v0.7.0-4-g6f16b0c",
+			"Rev": "6f16b0ccf2a6ebd1a234daacfb6199510fbd0db4"
+		},
+		{
+			"ImportPath": "github.com/lib/pq",
+			"Comment": "go1.0-cutoff-117-g50761b0",
+			"Rev": "50761b0867bd1d9d069276790bcd4a3bccf2324a"
+		},
+		{
+			"ImportPath": "github.com/lib/pq/oid",
+			"Comment": "go1.0-cutoff-117-g50761b0",
+			"Rev": "50761b0867bd1d9d069276790bcd4a3bccf2324a"
+		},
+		{
+			"ImportPath": "github.com/mattn/go-runewidth",
+			"Comment": "v0.0.1",
+			"Rev": "d6bea18f789704b5f83375793155289da36a3c7f"
+		},
+		{
+			"ImportPath": "github.com/urfave/cli",
+			"Comment": "v1.18.0-65-g61f519f",
+			"Rev": "61f519fe5e57c2518c03627b194899a105838eba"
+		}
+	]
+}
