@@ -5,7 +5,7 @@ import (
 	"os"
 
 	"github.com/wwek/ncgo/app/speedtest"
-	"gopkg.in/urfave/cli.v2"
+	"gopkg.in/urfave/cli.v1"
 )
 
 func main() {
@@ -16,7 +16,7 @@ func main() {
 	app.Copyright = `项目源码： https://github.com/wwek/ncgo
    作者：     wwek|流水理鱼
    作者博客： http://www.iamle.com`
-	app.Commands = []*cli.Command{
+	app.Commands = []cli.Command{
 		{
 			Name:    "default",
 			Aliases: []string{"df"},
@@ -24,6 +24,28 @@ func main() {
 			Action: func(c *cli.Context) error {
 				fmt.Println("boom! I say!")
 				return nil
+			},
+		},
+		{
+			Name:    "httpfile",
+			Aliases: []string{"hf"},
+			Usage:   "基于http的文件下载和上传",
+			Action: func(c *cli.Context) error {
+				fmt.Println("boom httpfile!")
+				fmt.Println(c)
+				return nil
+			},
+			Flags: []cli.Flag{
+				cli.StringFlag{
+					Name:  "port,p",
+					Value: "8080",
+					Usage: "监听端口",
+				},
+				cli.StringFlag{
+					Name:  "docroot,dr",
+					Value: "./",
+					Usage: "目录",
+				},
 			},
 		},
 		{
