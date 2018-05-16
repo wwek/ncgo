@@ -25,18 +25,6 @@
 #   unused-packages = true
 
 
-[[constraint]]
-  branch = "master"
-  name = "github.com/joliv/spark"
-
-[[constraint]]
-  branch = "master"
-  name = "github.com/kellydunn/golang-geo"
-
 [prune]
   go-tests = true
   unused-packages = true
-
-[[constraint]]
-  branch = "master"
-  name = "github.com/sh3rp/tcping"

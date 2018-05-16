@@ -1,6 +1,7 @@
-package tcping
+package main
 
 import (
+	"flag"
 	"fmt"
 	"os"
 	"strconv"
@@ -8,7 +9,6 @@ import (
 	"time"
 
 	"github.com/sh3rp/tcping/tcping"
-	"gopkg.in/urfave/cli.v1"
 )
 
 var VERSION = "1.1"
@@ -20,14 +20,20 @@ var debug bool
 var count int
 var showVersion bool
 
-func Run(c *cli.Context) {
-
-	host = c.Command.Name
+func main() {
+	flag.StringVar(&ports, "p", "80", "Port(s) to use for the TCP connection; for multiple ports, use a comma separated list")
+	flag.BoolVar(&debug, "d", false, "Debug output packet sent and received")
+	flag.IntVar(&count, "c", 0, "Number of probes to send")
+	flag.StringVar(&iface, "i", "", "Interface to use as the source of the TCP packets")
+	flag.BoolVar(&showVersion, "v", false, "Version info")
+	flag.Parse()
 
 	if showVersion {
 		fmt.Printf("tcping v%s\n", VERSION)
 		return
 	}
+
+	host = flag.Arg(0)
 
 	if host == "" {
 		fmt.Printf("Must supply a host to ping.\n")

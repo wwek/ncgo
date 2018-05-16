@@ -5,6 +5,7 @@ import (
 	"os"
 
 	"github.com/wwek/ncgo/app/speedtest"
+	"github.com/wwek/ncgo/app/tcping"
 	"gopkg.in/urfave/cli.v1"
 )
 
@@ -55,6 +56,42 @@ func main() {
 			Action: func(c *cli.Context) error {
 				speedtest.Run()
 				return nil
+			},
+		},
+		{
+			Name:    "tcping",
+			Aliases: []string{"tcping"},
+			Usage:   "tcping检查某个tcp端口sync，ack时间",
+			Action: func(c *cli.Context) error {
+				tcping.Run(c)
+				return nil
+			},
+			Flags: []cli.Flag{
+				cli.StringFlag{
+					Name:  "p",
+					Value: "80",
+					Usage: "Port(s) to use for the TCP connection; for multiple ports, use a comma separated list",
+				},
+				cli.BoolFlag{
+					Name:   "d",
+					Hidden: true,
+					Usage:  "Debug output packet sent and received",
+				},
+				cli.IntFlag{
+					Name:  "c",
+					Value: 0,
+					Usage: "Number of probes to send",
+				},
+				cli.StringFlag{
+					Name:  "i",
+					Value: "",
+					Usage: "Interface to use as the source of the TCP packets",
+				},
+				cli.BoolFlag{
+					Name:   "v",
+					Hidden: true,
+					Usage:  "Version info",
+				},
 			},
 		},
 		// {

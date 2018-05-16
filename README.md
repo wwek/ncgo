@@ -13,15 +13,13 @@ ncgo help
 # 源码安装
 go get -u github.com/wwek/ncgo
 
-# 做？
+# 功能清单
+
 - [ ] 检查网络TCP UDP端口是否打开
-- [ ] 扫描IP
-- [✔️] 网络带宽测速 SpeedTest Cli命令行模式
-- [ ] http 和 socks代理
-- [ ] 反向tcp隧道
-- [ ] Ping
-- [ ] Mtr
-- [ ] Whois IP或域名信息查询
+- [ ] httpfile, hf    基于http的文件下载和上传
+- [ ✔️] speedtest, st   speedtest.net网络带宽测速 😁
+- [] tcping, tcping  tcping检查某个tcp端口sync，ack时间
+
 
 # 感谢
-vendor
+引入的多个开源项目
