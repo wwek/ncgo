@@ -73,13 +73,13 @@ func main() {
 					Usage: "Port(s) to use for the TCP connection; for multiple ports, use a comma separated list",
 				},
 				cli.BoolFlag{
-					Name:   "d",
-					Hidden: true,
-					Usage:  "Debug output packet sent and received",
+					Name: "d",
+					//Hidden: true,
+					Usage: "Debug output packet sent and received",
 				},
 				cli.IntFlag{
 					Name:  "c",
-					Value: 0,
+					Value: 10,
 					Usage: "Number of probes to send",
 				},
 				cli.StringFlag{
@@ -88,9 +88,9 @@ func main() {
 					Usage: "Interface to use as the source of the TCP packets",
 				},
 				cli.BoolFlag{
-					Name:   "v",
-					Hidden: true,
-					Usage:  "Version info",
+					Name: "v",
+					//Hidden: true,
+					Usage: "Version info",
 				},
 			},
 		},

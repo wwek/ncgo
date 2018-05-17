@@ -22,19 +22,27 @@ var showVersion bool
 
 func Run(c *cli.Context) {
 
-	host = c.Command.Name
-
-	if showVersion {
-		fmt.Printf("tcping v%s\n", VERSION)
-		return
-	}
+	host = c.Args()[0]
+	//fmt.Println(host)
+	ports = c.String("p")
+	iface = c.String("i")
+	debug = c.Bool("d")
+	count = c.Int("c")
+	showVersion = c.Bool("v")
 
 	if host == "" {
 		fmt.Printf("Must supply a host to ping.\n")
 		os.Exit(1)
 	}
 
+	if showVersion {
+		fmt.Printf("tcping v%s\n", VERSION)
+		return
+	}
+
 	src := tcping.GetInterface(iface)
+
+	//fmt.Println(src)
 
 	probe := tcping.NewProbe(src, host, debug)
 
