@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"github.com/wwek/ncgo/app/http_proxy"
 	"os"
 
 	"github.com/wwek/ncgo/app/speedtest"
@@ -24,6 +25,48 @@ func main() {
 			Action: func(c *cli.Context) error {
 				fmt.Println("boom! I say!")
 				return nil
+			},
+		},
+		{
+			Name:    "httpproxy",
+			Aliases: []string{"hp"},
+			Usage:   "http/https代理服务器",
+			Action: func(c *cli.Context) error {
+				http_proxy.Run()
+				return nil
+			},
+			Flags: []cli.Flag{
+				cli.StringFlag{
+					Name:  "port,p",
+					Value: "8080",
+					Usage: "监听端口",
+				},
+				cli.StringFlag{
+					Name:  "bind,b",
+					Value: "0.0.0.0",
+					Usage: "监听IP",
+				},
+			},
+		},
+		{
+			Name:    "socksproxy",
+			Aliases: []string{"s5p"},
+			Usage:   "socks5代理服务器",
+			Action: func(c *cli.Context) error {
+				http_proxy.Run()
+				return nil
+			},
+			Flags: []cli.Flag{
+				cli.StringFlag{
+					Name:  "port,p",
+					Value: "1080",
+					Usage: "监听端口",
+				},
+				cli.StringFlag{
+					Name:  "bind,b",
+					Value: "0.0.0.0",
+					Usage: "监听IP",
+				},
 			},
 		},
 		{
