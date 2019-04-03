@@ -2,9 +2,9 @@ package main
 
 import (
 	"fmt"
-	"github.com/wwek/ncgo/app/http_proxy"
 	"os"
 
+	"github.com/wwek/ncgo/app/httpproxy"
 	"github.com/wwek/ncgo/app/speedtest"
 	"gopkg.in/urfave/cli.v1"
 )
@@ -32,7 +32,7 @@ func main() {
 			Aliases: []string{"hp"},
 			Usage:   "http/https代理服务器",
 			Action: func(c *cli.Context) error {
-				http_proxy.Run()
+				httpproxy.Run()
 				return nil
 			},
 			Flags: []cli.Flag{
@@ -53,7 +53,7 @@ func main() {
 			Aliases: []string{"s5p"},
 			Usage:   "socks5代理服务器",
 			Action: func(c *cli.Context) error {
-				http_proxy.Run()
+				httpproxy.Run()
 				return nil
 			},
 			Flags: []cli.Flag{

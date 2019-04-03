@@ -1,4 +1,4 @@
-package main
+package httpproxy
 
 type Pxy struct {
 	Cfg Cfg
@@ -44,9 +44,5 @@ func (p *Pxy) SetPxyCfg(cfg Cfg) {
 		p.Cfg.BaseAuth.UserName = cfg.BaseAuth.UserName
 		p.Cfg.BaseAuth.PassWord = cfg.BaseAuth.PassWord
 	}
-
-}
-
-func main() {
 
 }

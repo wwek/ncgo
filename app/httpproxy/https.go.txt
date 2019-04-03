@@ -51,7 +51,7 @@ func (p *Pxy) ServeHTTP(rw http.ResponseWriter, req *http.Request) {
 	go io.Copy(client, server)
 }
 
-func main() {
+func main1() {
 	proxy := NewProxy()
 	http.ListenAndServe("0.0.0.0:8080", proxy)
 }

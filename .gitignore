@@ -30,3 +30,5 @@ debug
 
 .vscode
 _vendor*
+
+.idea
