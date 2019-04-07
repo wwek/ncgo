@@ -60,12 +60,26 @@ func (p *Pxy) SetPxyCfg(cfg *Cfg) {
 
 }
 
-// 运行服务
+// 运行代理服务
 func (p *Pxy) ServeHTTP(rw http.ResponseWriter, req *http.Request) {
+	// debug
 	if p.Cfg.Debug {
 		log.Printf("Received request %s %s %s\n", req.Method, req.Host, req.RemoteAddr)
 		// fmt.Println(req)
 	}
+
+	if req.Method != "CONNECT" {
+		p.HTTP(rw, req)
+	} else {
+		// 处理https
+		// 直通模式不做任何中间处理
+		p.HTTPS(rw, req)
+	}
+
+}
+
+// http
+func (p *Pxy) HTTP(rw http.ResponseWriter, req *http.Request) {
 
 	transport := http.DefaultTransport
 
@@ -103,4 +117,31 @@ func (p *Pxy) ServeHTTP(rw http.ResponseWriter, req *http.Request) {
 	// 回写body
 	io.Copy(rw, res.Body)
 	res.Body.Close()
+}
+
+// https
+func (p *Pxy) HTTPS(rw http.ResponseWriter, req *http.Request) {
+
+	// Step 1
+	host := req.URL.Host
+	hij, ok := rw.(http.Hijacker)
+	if !ok {
+		log.Printf("HTTP Server does not support hijacking")
+	}
+
+	client, _, err := hij.Hijack()
+	if err != nil {
+		return
+	}
+
+	// 连接远程
+	server, err := net.Dial("tcp", host)
+	if err != nil {
+		return
+	}
+	client.Write([]byte("HTTP/1.0 200 Connection Established\r\n\r\n"))
+
+	// 直通双向复制
+	go io.Copy(server, client)
+	go io.Copy(client, server)
 }
