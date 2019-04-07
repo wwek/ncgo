@@ -32,7 +32,13 @@ func main() {
 			Aliases: []string{"hp"},
 			Usage:   "http/https代理服务器",
 			Action: func(c *cli.Context) error {
-				httpproxy.Run()
+				cfg := &httpproxy.Cfg{}
+				cfg.Addr = c.String("addr")
+				cfg.Port = c.String("port")
+				cfg.IsAnonymous = c.Bool("anonymous")
+				cfg.Debug = c.Bool("debug")
+				// fmt.Println(cfg)
+				httpproxy.Run(cfg)
 				return nil
 			},
 			Flags: []cli.Flag{
@@ -42,9 +48,19 @@ func main() {
 					Usage: "监听端口",
 				},
 				cli.StringFlag{
-					Name:  "bind,b",
+					Name:  "addr,a",
 					Value: "0.0.0.0",
 					Usage: "监听IP",
+				},
+				cli.StringFlag{
+					Name:  "anonymous,n",
+					Value: "true",
+					Usage: "匿名的(默认是)",
+				},
+				cli.StringFlag{
+					Name:  "debug,d",
+					Value: "false",
+					Usage: "调试模式(默认否)",
 				},
 			},
 		},
@@ -53,7 +69,7 @@ func main() {
 			Aliases: []string{"s5p"},
 			Usage:   "socks5代理服务器",
 			Action: func(c *cli.Context) error {
-				httpproxy.Run()
+				//httpproxy.Run()
 				return nil
 			},
 			Flags: []cli.Flag{

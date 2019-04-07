@@ -10,6 +10,7 @@ require (
 	github.com/kellydunn/golang-geo v0.0.0-20190220175717-2c6d5d781da2
 	github.com/kylelemons/go-gypsy v0.0.0-20160905020020-08cad365cd28 // indirect
 	github.com/lib/pq v1.0.0 // indirect
+	github.com/op/go-logging v0.0.0-20160315200505-970db520ece7 // indirect
 	github.com/stretchr/testify v1.3.0 // indirect
 	github.com/ziutek/mymysql v1.5.4 // indirect
 	golang.org/x/crypto v0.0.0-20190325154230-a5d413f7728c // indirect
