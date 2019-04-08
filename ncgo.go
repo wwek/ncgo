@@ -36,6 +36,8 @@ func main() {
 				cfg.Addr = c.String("addr")
 				cfg.Port = c.String("port")
 				cfg.IsAnonymous = c.Bool("anonymous")
+				cfg.BaseAuth.UserName = c.String("user")
+				cfg.BaseAuth.PassWord = c.String("pwd")
 				cfg.Debug = c.Bool("debug")
 				// fmt.Println(cfg)
 				httpproxy.Run(cfg)
@@ -55,7 +57,17 @@ func main() {
 				cli.StringFlag{
 					Name:  "anonymous,n",
 					Value: "true",
-					Usage: "匿名的(默认是)",
+					Usage: "匿名",
+				},
+				cli.StringFlag{
+					Name:  "username,user",
+					Value: "",
+					Usage: "username",
+				},
+				cli.StringFlag{
+					Name:  "password,pwd",
+					Value: "",
+					Usage: "password",
 				},
 				cli.StringFlag{
 					Name:  "debug,d",

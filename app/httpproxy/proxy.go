@@ -47,12 +47,17 @@ func (p *Pxy) SetPxyCfg(cfg *Cfg) {
 	if cfg.Debug != p.Cfg.Debug {
 		p.Cfg.Debug = cfg.Debug
 	}
-	if cfg.BaseAuth.IsBaseAuth != p.Cfg.BaseAuth.IsBaseAuth {
-		p.Cfg.BaseAuth.IsBaseAuth = cfg.BaseAuth.IsBaseAuth
-	}
-	if cfg.BaseAuth.UserName != "" && cfg.BaseAuth.PassWord != "" {
+	if cfg.BaseAuth.UserName != "" {
 		p.Cfg.BaseAuth.UserName = cfg.BaseAuth.UserName
-		p.Cfg.BaseAuth.PassWord = cfg.BaseAuth.PassWord
+		//p.Cfg.BaseAuth.IsBaseAuth == true
+		if cfg.BaseAuth.PassWord != "" {
+			p.Cfg.BaseAuth.PassWord = cfg.BaseAuth.PassWord
+		} else {
+			password := GetRandomString(4)
+			p.Cfg.BaseAuth.PassWord = password
+			log.Printf("httpproxy need BaseAuth username is:%s password is:%s", p.Cfg.BaseAuth.UserName, password)
+		}
+
 	}
 
 }
