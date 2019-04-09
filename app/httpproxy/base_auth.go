@@ -13,21 +13,24 @@ type BaseAuth struct {
 	PassWord   string // 密码
 }
 
+var proxyAuthorizationHeader = "Proxy-Authorization"
 
-func ChkBaseAuth(w http.ResponseWriter, r *http.Request, cfg *Cfg) bool {
-	s := strings.SplitN(r.Header.Get("Authorization"), " ",2)
-	if len(s) != 2 {
+// 检查请求认证
+// https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Headers/Proxy-Authorization
+func ChkBaseAuth(req *http.Request, cfg *Cfg) bool {
+	authheader := strings.SplitN(req.Header.Get(proxyAuthorizationHeader), " ", 2)
+	req.Header.Del(proxyAuthorizationHeader)
+	if len(authheader) != 2 || authheader[0] != "Basic" {
 		return false
 	}
-	b, err := base64.StdEncoding.DecodeString(s[1])
+	userpassraw, err := base64.StdEncoding.DecodeString(authheader[1])
 	if err != nil {
 		return false
 	}
-
-	pair := strings.SplitN(string(b), ":", 2)
-	if len(pair) != 2 {
+	userpass := strings.SplitN(string(userpassraw), ":", 2)
+	if len(userpass) != 2 {
 		return false
 	}
 
-	return pair[0] == cfg.BaseAuth.UserName && pair[1] == cfg.BaseAuth.PassWord
+	return userpass[0] == cfg.BaseAuth.UserName &&  userpass[1] == cfg.BaseAuth.PassWord
 }

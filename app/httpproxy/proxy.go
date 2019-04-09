@@ -70,24 +70,37 @@ func (p *Pxy) ServeHTTP(rw http.ResponseWriter, req *http.Request) {
 		// fmt.Println(req)
 	}
 
-	// BaseAuth
-	if p.Cfg.BaseAuth.IsBaseAuth {
-		baseAuth := ChkBaseAuth(rw,req,&p.Cfg)
-		if false == baseAuth {
-			rw.Header().Set("WWW-Authenticate", `Basic realm="httpproxy"`)
-			rw.WriteHeader(401)
-			_, _ = rw.Write([]byte("401 Unauthorized\n"))
-			return
-		}
-	}
-
-
 	// http && https
 	if req.Method != "CONNECT" {
 		// 处理http
+
+		// http BaseAuth
+		if p.Cfg.BaseAuth.IsBaseAuth {
+			baseAuth := ChkBaseAuth(req,&p.Cfg)
+			if false == baseAuth {
+				rw.Header().Set("Proxy-Authorization", `Basic realm=my_realm`)
+				rw.Header().Set("Proxy-Connection", `close`)
+				rw.WriteHeader(401)
+				_, _ = rw.Write([]byte("401 Unauthorized\n"))
+				return
+			}
+		}
+
 		p.HTTP(rw, req)
 	} else {
 		// 处理https
+
+		// https BaseAuth
+		if p.Cfg.BaseAuth.IsBaseAuth {
+			baseAuth := ChkBaseAuth(req,&p.Cfg)
+			if false == baseAuth {
+				rw.Header().Set("Proxy-Authorization", `Basic realm=my_realm`)
+				rw.Header().Set("Proxy-Connection", `close`)
+				rw.WriteHeader(401)
+				_, _ = rw.Write([]byte("401 Unauthorized\n"))
+				return
+			}
+		}
 		// 直通模式不做任何中间处理
 		p.HTTPS(rw, req)
 	}
