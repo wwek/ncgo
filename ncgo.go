@@ -57,7 +57,7 @@ func main() {
 				cli.StringFlag{
 					Name:  "anonymous,n",
 					Value: "true",
-					Usage: "匿名",
+					Usage: "high匿名",
 				},
 				cli.StringFlag{
 					Name:  "username,user",

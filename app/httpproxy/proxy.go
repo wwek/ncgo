@@ -49,7 +49,7 @@ func (p *Pxy) SetPxyCfg(cfg *Cfg) {
 	}
 	if cfg.BaseAuth.UserName != "" {
 		p.Cfg.BaseAuth.UserName = cfg.BaseAuth.UserName
-		//p.Cfg.BaseAuth.IsBaseAuth == true
+		p.Cfg.BaseAuth.IsBaseAuth = true
 		if cfg.BaseAuth.PassWord != "" {
 			p.Cfg.BaseAuth.PassWord = cfg.BaseAuth.PassWord
 		} else {
@@ -70,7 +70,21 @@ func (p *Pxy) ServeHTTP(rw http.ResponseWriter, req *http.Request) {
 		// fmt.Println(req)
 	}
 
+	// BaseAuth
+	if p.Cfg.BaseAuth.IsBaseAuth {
+		baseAuth := ChkBaseAuth(rw,req,&p.Cfg)
+		if false == baseAuth {
+			rw.Header().Set("WWW-Authenticate", `Basic realm="httpproxy"`)
+			rw.WriteHeader(401)
+			_, _ = rw.Write([]byte("401 Unauthorized\n"))
+			return
+		}
+	}
+
+
+	// http && https
 	if req.Method != "CONNECT" {
+		// 处理http
 		p.HTTP(rw, req)
 	} else {
 		// 处理https
