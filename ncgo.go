@@ -57,22 +57,22 @@ func main() {
 				cli.StringFlag{
 					Name:  "anonymous,n",
 					Value: "true",
-					Usage: "匿名",
+					Usage: "高匿名代理",
 				},
 				cli.StringFlag{
 					Name:  "username,user",
 					Value: "",
-					Usage: "username",
+					Usage: "认证账号username",
 				},
 				cli.StringFlag{
 					Name:  "password,pwd",
 					Value: "",
-					Usage: "password",
+					Usage: "认证密码password",
 				},
 				cli.StringFlag{
 					Name:  "debug,d",
 					Value: "false",
-					Usage: "调试模式(默认否)",
+					Usage: "调试模式",
 				},
 			},
 		},

@@ -5,6 +5,7 @@ go 1.12
 require (
 	github.com/Bowery/prompt v0.0.0-20180817134258-8a1d5376df1c
 	github.com/bndr/gotabulate v1.1.2
+	github.com/elazarl/goproxy v0.0.0-20181111060418-2ce16c963a8a // indirect
 	github.com/erikstmartin/go-testdb v0.0.0-20160219214506-8d10e4a1bae5 // indirect
 	github.com/joliv/spark v0.0.0-20151215235333-2d625891bea1
 	github.com/kellydunn/golang-geo v0.0.0-20190220175717-2c6d5d781da2
