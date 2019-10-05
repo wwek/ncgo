@@ -198,9 +198,12 @@ struct ltchars {
 #include <linux/kexec.h>
 #include <linux/keyctl.h>
 #include <linux/magic.h>
+<<<<<<< HEAD
 #include <linux/memfd.h>
 #include <linux/module.h>
 #include <linux/netfilter/nfnetlink.h>
+=======
+>>>>>>> 230edbfd0c6030d382566735eeadeb449aa46dbc
 #include <linux/netlink.h>
 #include <linux/net_namespace.h>
 #include <linux/perf_event.h>
@@ -432,7 +435,11 @@ ccflags="$@"
 		$2 ~ /^TC[IO](ON|OFF)$/ ||
 		$2 ~ /^IN_/ ||
 		$2 ~ /^LOCK_(SH|EX|NB|UN)$/ ||
+<<<<<<< HEAD
 		$2 ~ /^(AF|SOCK|SO|SOL|IPPROTO|IP|IPV6|ICMP6|TCP|EVFILT|NOTE|EV|SHUT|PROT|MAP|MFD|T?PACKET|MSG|SCM|MCL|DT|MADV|PR)_/ ||
+=======
+		$2 ~ /^(AF|SOCK|SO|SOL|IPPROTO|IP|IPV6|ICMP6|TCP|EVFILT|NOTE|EV|SHUT|PROT|MAP|T?PACKET|MSG|SCM|MCL|DT|MADV|PR)_/ ||
+>>>>>>> 230edbfd0c6030d382566735eeadeb449aa46dbc
 		$2 ~ /^TP_STATUS_/ ||
 		$2 ~ /^FALLOC_/ ||
 		$2 == "ICMPV6_FILTER" ||
@@ -479,10 +486,14 @@ ccflags="$@"
 		$2 ~ /^PERF_EVENT_IOC_/ ||
 		$2 ~ /^SECCOMP_MODE_/ ||
 		$2 ~ /^SPLICE_/ ||
+<<<<<<< HEAD
 		$2 ~ /^SYNC_FILE_RANGE_/ ||
 		$2 !~ /^AUDIT_RECORD_MAGIC/ &&
 		$2 !~ /IOC_MAGIC/ &&
 		$2 ~ /^[A-Z][A-Z0-9_]+_MAGIC2?$/ ||
+=======
+		$2 ~ /^[A-Z0-9_]+_MAGIC2?$/ ||
+>>>>>>> 230edbfd0c6030d382566735eeadeb449aa46dbc
 		$2 ~ /^(VM|VMADDR)_/ ||
 		$2 ~ /^IOCTL_VM_SOCKETS_/ ||
 		$2 ~ /^(TASKSTATS|TS)_/ ||

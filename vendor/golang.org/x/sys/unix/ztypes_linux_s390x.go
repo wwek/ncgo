@@ -1463,6 +1463,7 @@ const (
 	SizeofTpacketHdr  = 0x20
 	SizeofTpacket2Hdr = 0x20
 	SizeofTpacket3Hdr = 0x30
+<<<<<<< HEAD
 
 	SizeofTpacketStats   = 0x8
 	SizeofTpacketStatsV3 = 0xc
@@ -2097,3 +2098,6 @@ type FanotifyResponse struct {
 	Fd       int32
 	Response uint32
 }
+=======
+)
+>>>>>>> 230edbfd0c6030d382566735eeadeb449aa46dbc

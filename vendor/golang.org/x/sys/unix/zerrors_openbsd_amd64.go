@@ -1661,7 +1661,11 @@ var errorList = [...]struct {
 	{32, "EPIPE", "broken pipe"},
 	{33, "EDOM", "numerical argument out of domain"},
 	{34, "ERANGE", "result too large"},
+<<<<<<< HEAD
 	{35, "EAGAIN", "resource temporarily unavailable"},
+=======
+	{35, "EWOULDBLOCK", "resource temporarily unavailable"},
+>>>>>>> 230edbfd0c6030d382566735eeadeb449aa46dbc
 	{36, "EINPROGRESS", "operation now in progress"},
 	{37, "EALREADY", "operation already in progress"},
 	{38, "ENOTSOCK", "socket operation on non-socket"},
@@ -1717,11 +1721,15 @@ var errorList = [...]struct {
 	{88, "ECANCELED", "operation canceled"},
 	{89, "EIDRM", "identifier removed"},
 	{90, "ENOMSG", "no message of desired type"},
+<<<<<<< HEAD
 	{91, "ENOTSUP", "not supported"},
 	{92, "EBADMSG", "bad message"},
 	{93, "ENOTRECOVERABLE", "state not recoverable"},
 	{94, "EOWNERDEAD", "previous owner died"},
 	{95, "ELAST", "protocol error"},
+=======
+	{91, "ELAST", "not supported"},
+>>>>>>> 230edbfd0c6030d382566735eeadeb449aa46dbc
 }
 
 // Signal table

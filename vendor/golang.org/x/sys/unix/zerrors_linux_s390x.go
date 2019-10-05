@@ -174,7 +174,10 @@ const (
 	B9600                                = 0xd
 	BALLOON_KVM_MAGIC                    = 0x13661366
 	BDEVFS_MAGIC                         = 0x62646576
+<<<<<<< HEAD
 	BINDERFS_SUPER_MAGIC                 = 0x6c6f6f70
+=======
+>>>>>>> 230edbfd0c6030d382566735eeadeb449aa46dbc
 	BINFMTFS_MAGIC                       = 0x42494e4d
 	BLKBSZGET                            = 0x80081270
 	BLKBSZSET                            = 0x40081271
@@ -559,7 +562,11 @@ const (
 	FS_POLICY_FLAGS_PAD_4                = 0x0
 	FS_POLICY_FLAGS_PAD_8                = 0x1
 	FS_POLICY_FLAGS_PAD_MASK             = 0x3
+<<<<<<< HEAD
 	FS_POLICY_FLAGS_VALID                = 0x7
+=======
+	FS_POLICY_FLAGS_VALID                = 0x3
+>>>>>>> 230edbfd0c6030d382566735eeadeb449aa46dbc
 	FUTEXFS_SUPER_MAGIC                  = 0xbad1dea
 	F_ADD_SEALS                          = 0x409
 	F_DUPFD                              = 0x0
@@ -926,6 +933,7 @@ const (
 	IXOFF                                = 0x1000
 	IXON                                 = 0x400
 	JFFS2_SUPER_MAGIC                    = 0x72b6
+<<<<<<< HEAD
 	KEXEC_ARCH_386                       = 0x30000
 	KEXEC_ARCH_68K                       = 0x40000
 	KEXEC_ARCH_AARCH64                   = 0xb70000
@@ -946,6 +954,8 @@ const (
 	KEXEC_ON_CRASH                       = 0x1
 	KEXEC_PRESERVE_CONTEXT               = 0x2
 	KEXEC_SEGMENT_MAX                    = 0x10
+=======
+>>>>>>> 230edbfd0c6030d382566735eeadeb449aa46dbc
 	KEYCTL_ASSUME_AUTHORITY              = 0x10
 	KEYCTL_CHOWN                         = 0x4
 	KEYCTL_CLEAR                         = 0x7
@@ -1053,6 +1063,7 @@ const (
 	MCL_CURRENT                          = 0x1
 	MCL_FUTURE                           = 0x2
 	MCL_ONFAULT                          = 0x4
+<<<<<<< HEAD
 	MFD_ALLOW_SEALING                    = 0x2
 	MFD_CLOEXEC                          = 0x1
 	MFD_HUGETLB                          = 0x4
@@ -1070,6 +1081,8 @@ const (
 	MFD_HUGE_8MB                         = 0x5c000000
 	MFD_HUGE_MASK                        = 0x3f
 	MFD_HUGE_SHIFT                       = 0x1a
+=======
+>>>>>>> 230edbfd0c6030d382566735eeadeb449aa46dbc
 	MINIX2_SUPER_MAGIC                   = 0x2468
 	MINIX2_SUPER_MAGIC2                  = 0x2478
 	MINIX3_SUPER_MAGIC                   = 0x4d5a
@@ -1078,8 +1091,11 @@ const (
 	MNT_DETACH                           = 0x2
 	MNT_EXPIRE                           = 0x4
 	MNT_FORCE                            = 0x1
+<<<<<<< HEAD
 	MODULE_INIT_IGNORE_MODVERSIONS       = 0x1
 	MODULE_INIT_IGNORE_VERMAGIC          = 0x2
+=======
+>>>>>>> 230edbfd0c6030d382566735eeadeb449aa46dbc
 	MSDOS_SUPER_MAGIC                    = 0x4d44
 	MSG_BATCH                            = 0x40000
 	MSG_CMSG_CLOEXEC                     = 0x40000000
@@ -1178,6 +1194,7 @@ const (
 	NETLINK_UNUSED                       = 0x1
 	NETLINK_USERSOCK                     = 0x2
 	NETLINK_XFRM                         = 0x6
+<<<<<<< HEAD
 	NETNSA_MAX                           = 0x5
 	NETNSA_NSID_NOT_ASSIGNED             = -0x1
 	NFNETLINK_V0                         = 0x0
@@ -1209,6 +1226,8 @@ const (
 	NFNL_SUBSYS_OSF                      = 0x5
 	NFNL_SUBSYS_QUEUE                    = 0x3
 	NFNL_SUBSYS_ULOG                     = 0x4
+=======
+>>>>>>> 230edbfd0c6030d382566735eeadeb449aa46dbc
 	NFS_SUPER_MAGIC                      = 0x6969
 	NILFS_SUPER_MAGIC                    = 0x3434
 	NL0                                  = 0x0
@@ -1350,6 +1369,7 @@ const (
 	PERF_EVENT_IOC_SET_FILTER            = 0x40082406
 	PERF_EVENT_IOC_SET_OUTPUT            = 0x2405
 	PIPEFS_MAGIC                         = 0x50495045
+<<<<<<< HEAD
 	PPPIOCATTACH                         = 0x4004743d
 	PPPIOCATTCHAN                        = 0x40047438
 	PPPIOCCONNECT                        = 0x4004743a
@@ -1380,6 +1400,8 @@ const (
 	PPPIOCSRASYNCMAP                     = 0x40047454
 	PPPIOCSXASYNCMAP                     = 0x4020744f
 	PPPIOCXFERUNIT                       = 0x744e
+=======
+>>>>>>> 230edbfd0c6030d382566735eeadeb449aa46dbc
 	PRIO_PGRP                            = 0x1
 	PRIO_PROCESS                         = 0x0
 	PRIO_USER                            = 0x2
@@ -1632,9 +1654,12 @@ const (
 	RAMFS_MAGIC                          = 0x858458f6
 	RDTGROUP_SUPER_MAGIC                 = 0x7655821
 	REISERFS_SUPER_MAGIC                 = 0x52654973
+<<<<<<< HEAD
 	RENAME_EXCHANGE                      = 0x2
 	RENAME_NOREPLACE                     = 0x1
 	RENAME_WHITEOUT                      = 0x4
+=======
+>>>>>>> 230edbfd0c6030d382566735eeadeb449aa46dbc
 	RLIMIT_AS                            = 0x9
 	RLIMIT_CORE                          = 0x4
 	RLIMIT_CPU                           = 0x0
@@ -1866,8 +1891,11 @@ const (
 	SECCOMP_MODE_STRICT                  = 0x1
 	SECURITYFS_MAGIC                     = 0x73636673
 	SELINUX_MAGIC                        = 0xf97cff8c
+<<<<<<< HEAD
 	SFD_CLOEXEC                          = 0x80000
 	SFD_NONBLOCK                         = 0x800
+=======
+>>>>>>> 230edbfd0c6030d382566735eeadeb449aa46dbc
 	SHUT_RD                              = 0x0
 	SHUT_RDWR                            = 0x2
 	SHUT_WR                              = 0x1
@@ -2118,9 +2146,12 @@ const (
 	STATX_TYPE                           = 0x1
 	STATX_UID                            = 0x8
 	STATX__RESERVED                      = 0x80000000
+<<<<<<< HEAD
 	SYNC_FILE_RANGE_WAIT_AFTER           = 0x4
 	SYNC_FILE_RANGE_WAIT_BEFORE          = 0x1
 	SYNC_FILE_RANGE_WRITE                = 0x2
+=======
+>>>>>>> 230edbfd0c6030d382566735eeadeb449aa46dbc
 	SYSFS_MAGIC                          = 0x62656572
 	S_BLKSIZE                            = 0x200
 	S_IEXEC                              = 0x40
@@ -2363,6 +2394,7 @@ const (
 	TUNSETVNETBE                         = 0x400454de
 	TUNSETVNETHDRSZ                      = 0x400454d8
 	TUNSETVNETLE                         = 0x400454dc
+<<<<<<< HEAD
 	UBI_IOCATT                           = 0x40186f40
 	UBI_IOCDET                           = 0x40046f41
 	UBI_IOCEBCH                          = 0x40044f02
@@ -2378,6 +2410,8 @@ const (
 	UBI_IOCVOLCRBLK                      = 0x40804f07
 	UBI_IOCVOLRMBLK                      = 0x4f08
 	UBI_IOCVOLUP                         = 0x40084f00
+=======
+>>>>>>> 230edbfd0c6030d382566735eeadeb449aa46dbc
 	UDF_SUPER_MAGIC                      = 0x15013346
 	UMOUNT_NOFOLLOW                      = 0x8
 	USBDEVICE_SUPER_MAGIC                = 0x9fa2
@@ -2514,6 +2548,7 @@ const (
 	XATTR_CREATE                         = 0x1
 	XATTR_REPLACE                        = 0x2
 	XCASE                                = 0x4
+<<<<<<< HEAD
 	XDP_COPY                             = 0x2
 	XDP_FLAGS_DRV_MODE                   = 0x4
 	XDP_FLAGS_HW_MODE                    = 0x8
@@ -2536,6 +2571,9 @@ const (
 	XDP_ZEROCOPY                         = 0x4
 	XENFS_SUPER_MAGIC                    = 0xabba1974
 	XFS_SUPER_MAGIC                      = 0x58465342
+=======
+	XENFS_SUPER_MAGIC                    = 0xabba1974
+>>>>>>> 230edbfd0c6030d382566735eeadeb449aa46dbc
 	XTABS                                = 0x1800
 	ZSMALLOC_MAGIC                       = 0x58295829
 )
