@@ -14,5 +14,5 @@ func (t *Target) Tconn() (*net.UDPConn, error) {
 }
 
 func Duc(net string, addr *net.UDPAddr) (*net.UDPConn, error) {
-	return net.DialUDP()
+	return net.DialUDP(), nil
 }

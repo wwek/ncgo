@@ -20,17 +20,3 @@ _cgo_export.*
 _testmain.go
 
 *.exe
-*.test
-*.prof
-
-.idea/*
-
-README.html
-
-ncgo
-debug
-
-.vscode
-_vendor*
-
-.idea/*

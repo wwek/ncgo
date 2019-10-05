@@ -2,6 +2,8 @@ package main
 
 import (
 	"fmt"
+	"github.com/armon/go-socks5"
+	"github.com/wwek/ncgo/app/tcping"
 	"os"
 
 	"github.com/wwek/ncgo/app/httpproxy"
@@ -25,6 +27,44 @@ func main() {
 			Action: func(c *cli.Context) error {
 				fmt.Println("boom! I say!")
 				return nil
+			},
+		},
+		{
+			Name:    "tcping",
+			Aliases: []string{"tp"},
+			Usage:   "tcping 利用tcp端口三次握手来观察ping值",
+			Action: func(c *cli.Context) error {
+				cfg := &tcping.Cfg{}
+				cfg.Host = c.String("host")
+				cfg.Port = c.Int("port")
+				cfg.Count = c.Int("count")
+				cfg.TimeOut = c.Int("timeout")
+
+				//fmt.Println(cfg)
+				tcping.Run(cfg)
+				return nil
+			},
+			Flags: []cli.Flag{
+				cli.StringFlag{
+					Name:  "host,addr",
+					Value: "127.0.0.1",
+					Usage: "域名或IP",
+				},
+				cli.IntFlag{
+					Name:  "port,p",
+					Value: 80,
+					Usage: "端口",
+				},
+				cli.IntFlag{
+					Name:  "count,c",
+					Value: 10,
+					Usage: "tcping次数",
+				},
+				cli.IntFlag{
+					Name:  "timeout,t",
+					Value: 3,
+					Usage: "连接超时时间默认3s",
+				},
 			},
 		},
 		{
@@ -78,10 +118,20 @@ func main() {
 		},
 		{
 			Name:    "socksproxy",
-			Aliases: []string{"s5p"},
+			Aliases: []string{"socks5"},
 			Usage:   "socks5代理服务器",
 			Action: func(c *cli.Context) error {
-				//httpproxy.Run()
+				// Create a SOCKS5 server
+				conf := &socks5.Config{}
+				server, err := socks5.New(conf)
+				if err != nil {
+					panic(err)
+				}
+
+				// Create SOCKS5 proxy on localhost port 8000
+				if err := server.ListenAndServe("tcp", "127.0.0.1:8000"); err != nil {
+					panic(err)
+				}
 				return nil
 			},
 			Flags: []cli.Flag{
@@ -175,7 +225,7 @@ func main() {
 		// 	},
 		// },
 	}
-	app.Run(os.Args)
+	_ = app.Run(os.Args)
 	//dargs := []string{"", "default"}
 	//app.Run(os.Args)
 }
