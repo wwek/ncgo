@@ -1,0 +1,41 @@
+language: go
+go:
+  - 1.13.x
+
+os:
+  - linux
+  - osx
+
+dist: trusty
+sudo: false
+
+install: true
+
+env:
+  - GO111MODULE=on
+
+script:
+  - go build
+  - go test
+  - ./ncgo tcping www.baidu.com
+  - ./ncgo httpstat https://www.baidu.com/
+  - ./ncgo httpstat https://www.baidu.com:443/
+  - ./ncgo httpstat -X POST -d 'post' https://httpbin.org/post
+  - ./ncgo httpstat -X DELETE https://httpbin.org/delete
+  - ./ncgo httpstat https://www.google.com/
+  - ./ncgo httpstat https://www.google.com:443/
+  - ./ncgo httpstat -L https://httpbin.org/redirect-to?url=https://httpbin.org/relative-redirect/1
+  - ./ncgo httpstat -I https://httpbin.org/headers
+  - ./ncgo httpstat -I -L http://httpbin.org/redirect/1
+  - ./ncgo httpstat https://www.apple.com/
+  - ./ncgo httpstat -H Accept:\ application/vnd.heroku+json\;\ version=3 https://api.heroku.com/schema
+  - ./ncgo httpstat -O http://example.com/file && stat file
+  - ./ncgo httpstat -o custom http://example.com/file && stat custom
+  - ./ncgo httpstat -O https://httpbin.org/response-headers?Content-Disposition=attachment%3B%20filename%3dtest.json && stat test.json
+  - ./ncgo httpstat google.com
+  - ./ncgo httpstat google.com:80
+  - ./ncgo httpstat google.com:443
+  - ./ncgo httpstat golang.org:80/dl
+  - ./ncgo httpstat golang.org:443/dl
+  - ./ncgo httpstat https://http2.akamai.com/
+  - ./ncgo httpstat -H Host:\ www.google.com https://$(dig +short www.google.com | head -1):443/

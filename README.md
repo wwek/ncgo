@@ -15,13 +15,13 @@ go get -u github.com/wwek/ncgo
 
 # 功能清单
 
-- [ ] 检查网络TCP UDP端口是否打开
-- [ ] 扫描IP
-- [x️] 网络带宽测速 SpeedTest Cli命令行模式
+- [x] 网络带宽测速 SpeedTest Cli命令行模式
 - [x] http 和 socks代理
-- [ ] 反向tcp隧道
 - [x] tcping
 - [x] httpstat
+- [ ] 检查网络TCP UDP端口是否打开
+- [ ] 扫描IP
+- [ ] 反向tcp隧道
 - [ ] Ping
 - [ ] Mtr
 - [ ] Whois IP或域名信息查询
