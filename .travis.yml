@@ -1,45 +1,45 @@
 language: go
 go:
-- master
+  - master
 os:
-- linux
-dist: trusty
+  - linux
+dist: trusty # 编译的操作系统是 ubuntu trusty
 sudo: false
 install: true
 env:
-- GO111MODULE=on
-- VERSION=$(cat VERSION)
-- APPNAME=ncgo
+  - GO111MODULE=on
+  - VERSION=$(cat VERSION)
+  - APPNAME=ncgo
 script:
-- go build
-- go test
-- "./ncgo tcping -host www.baidu.com"
-- "./ncgo httpstat -u https://www.baidu.com/"
-- "./ncgo httpstat -u  https://www.baidu.com:443/"
-- "./ncgo httpstat -X POST -d 'post' -u  https://httpbin.org/post"
-- "./ncgo httpstat -X DELETE -u  https://httpbin.org/delete"
-- "./ncgo httpstat  -u https://www.google.com/"
-- "./ncgo httpstat  -u https://www.google.com:443/"
-- "./ncgo httpstat -L  -u https://httpbin.org/redirect-to?url=https://httpbin.org/relative-redirect/1"
-- "./ncgo httpstat -I  -u https://httpbin.org/headers"
-- "./ncgo httpstat -I -L  -u http://httpbin.org/redirect/1"
-- "./ncgo httpstat  -u https://www.apple.com/"
-- "./ncgo httpstat -H Accept:\\ application/vnd.heroku+json\\;\\ version=3  -u https://api.heroku.com/schema"
-- "./ncgo httpstat -O  -u https://httpbin.org/response-headers?Content-Disposition=attachment%3B%20filename%3dtest.json
+  - go build
+  - go test
+  - "./ncgo tcping -host www.baidu.com"
+  - "./ncgo httpstat -u https://www.baidu.com/"
+  - "./ncgo httpstat -u  https://www.baidu.com:443/"
+  - "./ncgo httpstat -X POST -d 'post' -u  https://httpbin.org/post"
+  - "./ncgo httpstat -X DELETE -u  https://httpbin.org/delete"
+  - "./ncgo httpstat  -u https://www.google.com/"
+  - "./ncgo httpstat  -u https://www.google.com:443/"
+  - "./ncgo httpstat -L  -u https://httpbin.org/redirect-to?url=https://httpbin.org/relative-redirect/1"
+  - "./ncgo httpstat -I  -u https://httpbin.org/headers"
+  - "./ncgo httpstat -I -L  -u http://httpbin.org/redirect/1"
+  - "./ncgo httpstat  -u https://www.apple.com/"
+  - "./ncgo httpstat -H Accept:\\ application/vnd.heroku+json\\;\\ version=3  -u https://api.heroku.com/schema"
+  - "./ncgo httpstat -O  -u https://httpbin.org/response-headers?Content-Disposition=attachment%3B%20filename%3dtest.json
   && stat test.json"
-- "./ncgo httpstat -u  google.com"
-- "./ncgo httpstat -u google.com:80"
-- "./ncgo httpstat -u google.com:443"
-- "./ncgo httpstat -u golang.org:80/dl"
-- "./ncgo httpstat -u  golang.org:443/dl"
-- "./ncgo httpstat -u  https://http2.akamai.com/"
+  - "./ncgo httpstat -u  google.com"
+  - "./ncgo httpstat -u google.com:80"
+  - "./ncgo httpstat -u google.com:443"
+  - "./ncgo httpstat -u golang.org:80/dl"
+  - "./ncgo httpstat -u  golang.org:443/dl"
+  - "./ncgo httpstat -u  https://http2.akamai.com/"
 before_deploy:
-- GO111MODULE=on GOOS=linux  GOARCH=amd64 go build -o $APPNAME-v$VERSION-linux-amd64
-- GO111MODULE=on GOOS=darwin GOARCH=amd64 go build -o $APPNAME-v$VERSION-darwin-amd64
-- GO111MODULE=on GOOS=windows GOARCH=amd64 go build -o $APPNAME-v$VERSION-windows-amd64.exe
+  - GO111MODULE=on GOOS=linux  GOARCH=amd64 go build -o $APPNAME-v$VERSION-linux-amd64
+  - GO111MODULE=on GOOS=darwin GOARCH=amd64 go build -o $APPNAME-v$VERSION-darwin-amd64
+  - GO111MODULE=on GOOS=windows GOARCH=amd64 go build -o $APPNAME-v$VERSION-windows-amd64.exe
 notifications:
   email:
-  - licoolgo@gmail.com
+    - licoolgo@gmail.com
 deploy:
   provider: releases
   api_key:
@@ -48,5 +48,6 @@ deploy:
     - "$APPNAME-v$VERSION-linux-amd64"
     - "$APPNAME-v$VERSION-darwin-amd64"
     - "$APPNAME-v$VERSION-windows-amd64.exe"
-  on:
-    repo: wwek/ncgo
+  skip_cleanup: true # 因为我要上传可执行文件到 release，所以不能自动把这个文件清除
+  on: # 只有打 tag 时才运行 deploy 阶段
+    tags: true
