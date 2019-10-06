@@ -7,9 +7,7 @@ dist: trusty # 编译的操作系统是 ubuntu trusty
 sudo: false
 install: true
 env:
-  - GO111MODULE=on
-  - VERSION=$(cat VERSION)
-  - APPNAME=ncgo
+  - VERSION=$(cat VERSION) APPNAME=ncgo GO111MODULE=on
 script:
   - go build
   - go test
