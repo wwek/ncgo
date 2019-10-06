@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"github.com/armon/go-socks5"
+	"github.com/wwek/ncgo/app/httpstat"
 	"os"
 
 	"github.com/wwek/ncgo/app/httpproxy"
@@ -64,6 +65,90 @@ func main() {
 					Name:  "timeout,t",
 					Value: 3,
 					Usage: "连接超时时间默认3s",
+				},
+			},
+		},
+		{
+			Name:    "httpstat",
+			Aliases: []string{"ht"},
+			Usage:   "httpstat 可以观察一个http请求各个环节的请求时间分布",
+			Action: func(c *cli.Context) error {
+				//fmt.Println(cfg)
+				httpstat.HttpUrl = c.String("u")
+				httpstat.HttpMethod = c.String("X")
+				httpstat.PostBody = c.String("d")
+				httpstat.FollowRedirects = c.Bool("L")
+				httpstat.OnlyHeader = c.Bool("I")
+				httpstat.Insecure = c.Bool("k")
+				httpstat.HttpHeaders = c.StringSlice("H")
+				httpstat.SaveOutput = c.Bool("O")
+				httpstat.OutputFile = c.String("o")
+				httpstat.ShowVersion = c.Bool("sv")
+				httpstat.ClientCertFile = c.String("E")
+				httpstat.FourOnly = c.Bool("4")
+				httpstat.SixOnly = c.Bool("6")
+				httpstat.Run()
+				return nil
+			},
+			Flags: []cli.Flag{
+				cli.StringFlag{
+					Name:  "u",
+					Value: "https://www.baidu.com:443",
+					Usage: "HTTP URL",
+				},
+				cli.StringFlag{
+					Name:  "X",
+					Value: "GET",
+					Usage: "HTTP method to use",
+				},
+				cli.StringFlag{
+					Name:  "d",
+					Value: "",
+					Usage: "the body of a POST or PUT request; from file use @filename",
+				},
+				cli.BoolFlag{
+					Name:   "L",
+					Hidden: false,
+					Usage:  "follow 30x redirects",
+				},
+				cli.BoolFlag{
+					Name:   "I",
+					Hidden: false,
+					Usage:  "don't read body of request",
+				},
+				cli.StringSliceFlag{
+					Name:  "H",
+					Usage: "set HTTP header; repeatable: -H 'Accept: ...' -H 'Range: ...'",
+				},
+				cli.BoolFlag{
+					Name:   "O",
+					Hidden: false,
+					Usage:  "save body as remote filename",
+				},
+				cli.StringFlag{
+					Name:  "o",
+					Value: "",
+					Usage: "output file for body",
+				},
+				cli.BoolFlag{
+					Name:   "sv",
+					Hidden: false,
+					Usage:  "print version number",
+				},
+				cli.StringFlag{
+					Name:  "E",
+					Value: "",
+					Usage: "client cert file for tls config",
+				},
+				cli.BoolFlag{
+					Name:   "4",
+					Hidden: false,
+					Usage:  "resolve IPv4 addresses only",
+				},
+				cli.BoolFlag{
+					Name:   "6",
+					Hidden: false,
+					Usage:  "resolve IPv6 addresses only",
 				},
 			},
 		},

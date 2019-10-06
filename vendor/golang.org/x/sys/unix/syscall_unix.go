@@ -8,10 +8,6 @@ package unix
 
 import (
 	"bytes"
-<<<<<<< HEAD
-=======
-	"runtime"
->>>>>>> 230edbfd0c6030d382566735eeadeb449aa46dbc
 	"sort"
 	"sync"
 	"syscall"
@@ -75,7 +71,6 @@ func SignalName(s syscall.Signal) string {
 	return ""
 }
 
-<<<<<<< HEAD
 // SignalNum returns the syscall.Signal for signal named s,
 // or 0 if a signal with such name is not found.
 // The signal name should start with "SIG".
@@ -89,8 +84,6 @@ func SignalNum(s string) syscall.Signal {
 	return signalNameMap[s]
 }
 
-=======
->>>>>>> 230edbfd0c6030d382566735eeadeb449aa46dbc
 // clen returns the index of the first NULL byte in n or len(n) if n contains no NULL byte.
 func clen(n []byte) int {
 	i := bytes.IndexByte(n, 0)
@@ -358,7 +351,11 @@ func SetsockoptLinger(fd, level, opt int, l *Linger) (err error) {
 }
 
 func SetsockoptString(fd, level, opt int, s string) (err error) {
-	return setsockopt(fd, level, opt, unsafe.Pointer(&[]byte(s)[0]), uintptr(len(s)))
+	var p unsafe.Pointer
+	if len(s) > 0 {
+		p = unsafe.Pointer(&[]byte(s)[0])
+	}
+	return setsockopt(fd, level, opt, p, uintptr(len(s)))
 }
 
 func SetsockoptTimeval(fd, level, opt int, tv *Timeval) (err error) {
