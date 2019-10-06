@@ -1,4 +1,4 @@
-# ncgo
+# ncgo [![Build Status](https://travis-ci.org/wwek/ncgo.svg?branch=master)](https://travis-ci.org/wwek/ncgo)
 ncgo 网络工具包
 
 # 下载
@@ -6,6 +6,8 @@ ncgo 网络工具包
 * Mirror (Windows/Linux/Mac) - 
 
 # 使用
+ncgo tcping www.baidu.com
+ncgo httpstat https://www.baidu.com
 
 ## 帮助
 ncgo help
