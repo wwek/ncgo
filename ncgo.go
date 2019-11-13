@@ -9,6 +9,7 @@ import (
 	"github.com/wwek/ncgo/app/httpproxy"
 	"github.com/wwek/ncgo/app/speedtest"
 	"github.com/wwek/ncgo/app/tcping"
+		"github.com/wwek/ncgo/app/tcpscan"
 	"gopkg.in/urfave/cli.v1"
 )
 
@@ -263,15 +264,44 @@ func main() {
 				return nil
 			},
 		},
-		// {
-		// 	Name:    "netscan",
-		// 	Aliases: []string{"ns"},
-		// 	Usage:   "网络扫描/端口检查",
-		// 	Action: func(c *cli.Context) {
-		// 		netscan.Run()
-		// 		//println("网络扫描: ", c.Args().First())
-		// 	},
-		// },
+		{
+			Name:    "tcpscan",
+			Aliases: []string{"tp"},
+			Usage:   "tcpscan tcp网络扫描",
+			Action: func(c *cli.Context) error {
+				cfg := &tcpscan.Cfg{}
+				cfg.HostName = c.String("hostname")
+				cfg.StartPort = c.Int("startport")
+				cfg.EndPort = c.Int("endport")
+				cfg.Timeout = c.Duration("timeout")
+
+				//fmt.Println(cfg)
+				tcpscan.Run(cfg)
+				return nil
+			},
+			Flags: []cli.Flag{
+				cli.StringFlag{
+					Name:  "hostname,host",
+					Value: "127.0.0.1",
+					Usage: "域名或IP",
+				},
+				cli.IntFlag{
+					Name:  "startport,sp",
+					Value: 80,
+					Usage: "开始端口",
+				},
+				cli.IntFlag{
+					Name:  "endport,ep",
+					Value: 100,
+					Usage: "结束端口",
+				},
+				cli.DurationFlag{
+					Name:  "timeout,t",
+					Value: 1000 * 1000000,
+					Usage: "连接超时时间默认 1000ms",
+				},
+			},
+		},
 		// {
 		// 	Name:    "dtest",
 		// 	Aliases: []string{"dt"},

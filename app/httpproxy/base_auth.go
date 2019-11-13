@@ -32,5 +32,5 @@ func ChkBaseAuth(req *http.Request, cfg *Cfg) bool {
 		return false
 	}
 
-	return userpass[0] == cfg.BaseAuth.UserName &&  userpass[1] == cfg.BaseAuth.PassWord
+	return userpass[0] == cfg.BaseAuth.UserName && userpass[1] == cfg.BaseAuth.PassWord
 }
