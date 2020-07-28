@@ -61,6 +61,8 @@ var (
 	ClientCertFile  string
 	FourOnly        bool
 	SixOnly         bool
+	Loop            bool
+	LoopTime        time.Duration
 
 	// number of redirects followed
 	RedirectsFollowed int

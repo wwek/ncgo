@@ -5,11 +5,12 @@ import (
 	"github.com/armon/go-socks5"
 	"github.com/wwek/ncgo/app/httpstat"
 	"os"
+	"time"
 
 	"github.com/wwek/ncgo/app/httpproxy"
 	"github.com/wwek/ncgo/app/speedtest"
 	"github.com/wwek/ncgo/app/tcping"
-		"github.com/wwek/ncgo/app/tcpscan"
+	"github.com/wwek/ncgo/app/tcpscan"
 	"gopkg.in/urfave/cli.v1"
 )
 
@@ -88,6 +89,8 @@ func main() {
 				httpstat.ClientCertFile = c.String("E")
 				httpstat.FourOnly = c.Bool("4")
 				httpstat.SixOnly = c.Bool("6")
+				httpstat.Loop = c.Bool("lp")
+				httpstat.LoopTime = c.Duration("lpt")
 				httpstat.Run()
 				return nil
 			},
@@ -150,6 +153,17 @@ func main() {
 					Name:   "6",
 					Hidden: false,
 					Usage:  "resolve IPv6 addresses only",
+				},
+				cli.BoolFlag{
+					Name:   "lp",
+					Hidden: false,
+					Usage:  "开启循环运行",
+				},
+				cli.DurationFlag{
+					Name:   "lpt",
+					Value:  10 * time.Second,
+					Hidden: false,
+					Usage:  "循环运行 间隔时间",
 				},
 			},
 		},

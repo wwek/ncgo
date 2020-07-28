@@ -5,6 +5,7 @@ import (
 	"log"
 	"os"
 	"runtime"
+	"time"
 )
 
 //app 入口
@@ -30,6 +31,13 @@ func Run() {
 
 	url := parseURL(HttpUrl)
 
-	visit(url)
+	if Loop {
+		for {
+			visit(url)
+			time.Sleep(LoopTime)
+		}
+	} else {
+		visit(url)
+	}
 
 }
