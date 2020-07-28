@@ -6,8 +6,12 @@ ncgo 网络工具包
 * Mirror (Windows/Linux/Mac) - 
 
 # 使用
+```bash
 ncgo tcping www.baidu.com
 ncgo httpstat https://www.baidu.com
+ncgo httpstat -u www.qq.com -lp
+```
+
 
 ## 帮助
 ncgo help
