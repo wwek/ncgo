@@ -27,15 +27,15 @@ github.com/montanaflynn/stats
 github.com/ziutek/mymysql/godrv
 github.com/ziutek/mymysql/mysql
 github.com/ziutek/mymysql/native
-# golang.org/x/net v0.0.0-20191003171128-d98b1b443823
+# golang.org/x/net v0.1.0
 golang.org/x/net/context
 golang.org/x/net/http/httpguts
 golang.org/x/net/http2
 golang.org/x/net/http2/hpack
 golang.org/x/net/idna
-# golang.org/x/sys v0.0.0-20191005200804-aed5e4c7ecf9
+# golang.org/x/sys v0.1.0
 golang.org/x/sys/unix
-# golang.org/x/text v0.3.2
+# golang.org/x/text v0.4.0
 golang.org/x/text/secure/bidirule
 golang.org/x/text/transform
 golang.org/x/text/unicode/bidi
